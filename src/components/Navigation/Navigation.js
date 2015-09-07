@@ -16,8 +16,9 @@ class Navigation {
   render() {
     return (
       <div className={classNames(this.props.className, 'Navigation')} role="navigation">
-        <a className="Navigation-link" href="/about" onClick={Link.handleClick}>About</a>
-        <a className="Navigation-link" href="/contact" onClick={Link.handleClick}>Contact</a>
+
+        <a className="Navigation-link" href="/flights" onClick={Link.handleClick}>Flights</a>
+        <a className="Navigation-link" href="/log" onClick={Link.handleClick}>Log</a>
         <span className="Navigation-spacer"> | </span>
         <a className="Navigation-link" href="/login" onClick={Link.handleClick}>Log in</a>
         <span className="Navigation-spacer">or</span>

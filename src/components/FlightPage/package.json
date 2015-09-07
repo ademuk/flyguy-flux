@@ -1,0 +1,6 @@
+{
+  "name": "FlightPage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./FlightPage.js"
+}

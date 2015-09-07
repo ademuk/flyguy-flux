@@ -12,7 +12,7 @@ class RegisterPage {
   };
 
   render() {
-    let title = 'New User Registration';
+    let title = 'Sign up';
     this.context.onSetTitle(title);
     return (
       <div className="RegisterPage">

@@ -1,22 +1,22 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { PropTypes } from 'react';
-import styles from './LoginPage.css';
+import styles from './FlightsPage.css';
 import withStyles from '../../decorators/withStyles';
 
 @withStyles(styles)
-class LoginPage {
+class FlightsPage {
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired
   };
 
   render() {
-    let title = 'Log in';
+    let title = 'Flights';
     this.context.onSetTitle(title);
     return (
-      <div className="LoginPage">
-        <div className="LoginPage-container">
+      <div className="FlightsPage">
+        <div className="FlightsPage-container">
           <h1>{title}</h1>
           <p>...</p>
         </div>
@@ -26,4 +26,4 @@ class LoginPage {
 
 }
 
-export default LoginPage;
+export default FlightsPage;

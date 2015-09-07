@@ -1,0 +1,6 @@
+{
+  "name": "LogPage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./LogPage.js"
+}
