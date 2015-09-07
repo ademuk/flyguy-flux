@@ -71,3 +71,4 @@ the file is. Name the test by appending `-test.js` to the js file.
 
  * [Flyguy Service](https://github.com/ademuk/flyguy-service) — Project for Flyguy REST API
  * [Flyguy Client](https://github.com/ademuk/flyguy) — Project for AngularJS client
+ * [React Starter Kit](https://github.com/kriasoft/react-starter-kit) - "isomorphic" web app boilerplate used to start this project
