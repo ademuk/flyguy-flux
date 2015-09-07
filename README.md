@@ -1,6 +1,6 @@
 # Flyguy Node Application
 
-## An isomorphic implementation of Flyguy
+An isomorphic implementation of Flyguy
 
 ### Directory Layout
 
@@ -55,14 +55,6 @@ $ npm start                     # or, `npm start -- release`
 This will start a lightweight development server with "live reload" and
 synchronized browsing across multiple devices and browsers.
 
-### How to Deploy
-
-```shell
-$ npm run deploy                # or, `npm run deploy -- production`
-```
-
-For more information see `tools/deploy.js`.
-
 ### How to Test
 
 Run unit tests powered by [Jest](https://facebook.github.io/jest/) with the following
@@ -78,6 +70,5 @@ the file is. Name the test by appending `-test.js` to the js file.
 
 ### Related Projects
 
- * [React Static Boilerplate](https://github.com/koistya/react-static-boilerplate) — Generates a static website from React components
- * [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — A boilerplate for authoring JavaScript/React.js libraries
- * [React Decorators](https://github.com/kriasoft/react-decorators) — A collection of higher-order React components
+ * [Flyguy Service](https://github.com/ademuk/flyguy-service) — Project for Flyguy REST API
+ * [Flyguy Client](https://github.com/ademuk/flyguy) — Project for AngularJS client
