@@ -30,8 +30,7 @@ An isomorphic implementation of Flyguy
 │   ├── /config.js              # Webpack configuration for both client and server side bundles
 │   ├── /copy.js                # Copies static files to output (build) folder
 │   ├── /serve.js               # Launches the Node.js/Express web server in a seperate process
-│   ├── /start.js               # Launches the development web server with "live reload" functionality
-│   └── /(deploy.js)            # Deploys your web application (Planned)
+│   └── /start.js               # Launches the development web server with "live reload" functionality
 │── package.json                # The list of 3rd party libraries and utilities
 └── preprocessor.js             # ES6 transpiler settings for Jest
 ```
