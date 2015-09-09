@@ -1,5 +1,3 @@
-/*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-
 import React, { PropTypes, Text } from 'react';
 import styles from './FlightsPage.css';
 import withStyles from '../../decorators/withStyles';
