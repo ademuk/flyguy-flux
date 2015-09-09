@@ -3,6 +3,8 @@
 import React, { PropTypes } from 'react';
 import styles from './LogPage.css';
 import withStyles from '../../decorators/withStyles';
+import LogForm from '../LogForm/LogForm'
+import http from '../../core/HttpClient';
 
 @withStyles(styles)
 class LogPage {
@@ -11,14 +13,20 @@ class LogPage {
     onSetTitle: PropTypes.func.isRequired
   };
 
+  onFlightSubmit = (flight) => {
+    http.post('/api/flights', flight).then(function () {
+      alert('Flighted Added', flight);
+    });
+  }
+
   render() {
     let title = 'Log a flight';
     this.context.onSetTitle(title);
     return (
       <div className="LogPage">
         <div className="LogPage-container">
-          <h1>{title}</h1>
-          <p>...</p>
+          <h3>{title}</h3>
+          <LogForm onSubmit={this.onFlightSubmit}></LogForm>
         </div>
       </div>
     );

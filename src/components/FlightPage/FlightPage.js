@@ -17,8 +17,9 @@ class FlightPage {
     return (
       <div className="FlightPage">
         <div className="FlightPage-container">
-          <h1>{title}</h1>
-          <p>...</p>
+          <h3>{this.props.name}</h3>
+          <p>{this.props.date}</p>
+          <pre>{this.props.notes}</pre>
         </div>
       </div>
     );

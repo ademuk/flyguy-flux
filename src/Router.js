@@ -20,10 +20,13 @@ const router = new Router(on => {
     return component && <App context={state.context}>{component}</App>;
   });
 
-  on('/flights', async () => <FlightsPage />);
+  on('/flights', async () => {
+    const data = await http.get(`/api/flights`);
+    return <FlightsPage {...data} />;
+  });
 
-  on('/flights/:id', async (id) => {
-    const data = await http.get(`/api/flights/${id}`);
+  on('/flights/:id', async (req) => {
+    const data = await http.get(`/api/flights/${req.params.id}`);
     return <FlightPage {...data} />;
   });
 

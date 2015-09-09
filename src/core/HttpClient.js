@@ -12,8 +12,26 @@ const getUrl = path => path.startsWith('http') ?
 const HttpClient = {
 
   get: path => new Promise((resolve, reject) => {
-    request
+    return request
       .get(getUrl(path))
+      .accept('application/json')
+      .end((err, res) => {
+        if (err) {
+          if (err.status === 404) {
+            resolve(null);
+          } else {
+            reject(err);
+          }
+        } else {
+          resolve(res.body);
+        }
+      });
+  }),
+
+  post: (path, data) => new Promise((resolve, reject) => {
+    return request
+      .post(getUrl(path))
+      .send(data)
       .accept('application/json')
       .end((err, res) => {
         if (err) {
