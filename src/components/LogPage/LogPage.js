@@ -14,6 +14,7 @@ class LogPage {
   onFlightSubmit = (flight) => {
     http.post('/api/flights', flight).then(function () {
       alert('Flighted Added', flight);
+      // TODO redirect
     });
   }
 

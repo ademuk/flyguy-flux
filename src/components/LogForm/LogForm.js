@@ -24,7 +24,6 @@ class LogForm extends React.Component {
       ReactDom.findDOMNode(this.refs.name).value = '';
       ReactDom.findDOMNode(this.refs.date).value = '';
       ReactDom.findDOMNode(this.refs.notes).value = '';
-      return;
     }
 
     render() {
@@ -55,12 +54,6 @@ class LogForm extends React.Component {
           </ul>
         </form>
       );
-    }
-
-    handleChange(name, e) {
-      var change = {};
-      change[name] = e.target.value;
-      this.setState(change);
     }
 };
 
