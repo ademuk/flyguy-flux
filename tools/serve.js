@@ -18,6 +18,9 @@ export default () => new Promise((resolve, reject) => {
   const server = cp.fork(path.join(__dirname, '../build/server.js'), {
     env: Object.assign({NODE_ENV: 'development'}, process.env)
   });
+  server.on('message', message => {
+    console.log(message);
+  });
   server.once('message', message => {
     if (message.match(/^online$/)) {
       resolve();
