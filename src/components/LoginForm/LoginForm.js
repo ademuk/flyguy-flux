@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
             <li>
               <label>
                 E-mail
-                <input type="text" placeholder="Email" ref='email' />
+                <input type="email" placeholder="Email" ref='email' />
               </label>
             </li>
             <li>

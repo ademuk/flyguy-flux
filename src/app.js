@@ -4,7 +4,7 @@ import FastClick from 'fastclick';
 import Dispatcher from './core/Dispatcher';
 import Router from './Router';
 import Location from './core/Location';
-import ActionTypes from './constants/ActionTypes';
+import SessionStore from './stores/SessionStore';
 import { addEventListener, removeEventListener } from './utils/DOMUtils';
 
 const container = document.getElementById('app');

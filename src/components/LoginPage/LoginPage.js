@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from './LoginPage.css';
 import withStyles from '../../decorators/withStyles';
 import LoginForm from '../LoginForm/LoginForm'
-import http from '../../core/HttpClient';
+import sessionActions from '../../actions/SessionActions';
 
 @withStyles(styles)
 class LoginPage {
@@ -12,10 +12,7 @@ class LoginPage {
   };
 
   onLoginSubmit = (user) => {
-    http.post('/api/token-auth', user).then(function () {
-      alert('Logged in', user);
-      // TODO redirect
-    });
+    sessionActions.create(user);
   }
 
   render() {
@@ -25,7 +22,7 @@ class LoginPage {
       <div className="LoginPage">
         <div className="LoginPage-container">
           <h3>{title}</h3>
-          <LogForm onSubmit={this.onLoginSubmit}></LogForm>
+          <LoginForm onSubmit={this.onLoginSubmit}></LoginForm>
         </div>
       </div>
     );
