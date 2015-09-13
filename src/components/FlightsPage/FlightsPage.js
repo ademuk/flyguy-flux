@@ -1,6 +1,7 @@
 import React, { PropTypes, Text } from 'react';
 import styles from './FlightsPage.css';
 import withStyles from '../../decorators/withStyles';
+import Link from '../Link';
 
 @withStyles(styles)
 class FlightsPage {
@@ -19,7 +20,7 @@ class FlightsPage {
           {this.props.results.map(function(result) {
             var href = '/flights/' + result.id;
             return <li key={result.id}>
-              <h4><a href={href}>{result.name}</a> <small>{result.date}</small></h4>
+              <h4><Link href={href}>{result.name}</Link> <small>{result.date}</small></h4>
             </li>;
           })}
         </ul>
