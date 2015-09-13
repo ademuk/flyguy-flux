@@ -28,7 +28,7 @@ function getToken() {
  * @param  {Object} user
  */
 function create(user) {
-  return http.post('/api/token-auth', user).then(function(response) {
+  return http.post('/token-auth', user).then(function(response) {
     setToken(response.data.token);
   });
 }

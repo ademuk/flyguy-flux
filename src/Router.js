@@ -7,7 +7,6 @@ import FlightPage from './components/FlightPage';
 import LogPage from './components/LogPage';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
-import ContentPage from './components/ContentPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 
@@ -19,12 +18,12 @@ const router = new Router(on => {
   });
 
   on('/flights', async () => {
-    const data = await http.get(`/api/flights`);
+    const data = await http.get(`/flights`);
     return <FlightsPage {...data} />;
   });
 
-  on('/flights/:id', async (req) => {
-    const data = await http.get(`/api/flights/${req.params.id}`);
+  on('/flights/:id', async (state) => {
+    const data = await http.get(`/flights/${state.params.id}`);
     return <FlightPage {...data} />;
   });
 
@@ -34,10 +33,7 @@ const router = new Router(on => {
 
   on('/register', async () => <RegisterPage />);
 
-  on('*', async (state) => {
-    const content = await http.get(`/api/content?path=${state.path}`);
-    return content && <ContentPage {...content} />;
-  });
+  on('/', async () => <LoginPage />);
 
   on('error', (state, error) => state.statusCode === 404 ?
     <App context={state.context} error={error}><NotFoundPage /></App> :
