@@ -12,8 +12,8 @@ function isModifiedEvent(event) {
 class Link {
 
   static propTypes = {
-    to: PropTypes.string.isRequired,
-    children: PropTypes.element.isRequired,
+    to: PropTypes.string,
+    children: PropTypes.string.isRequired,
     state: PropTypes.object,
     onClick: PropTypes.func
   };
