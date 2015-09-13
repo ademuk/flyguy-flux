@@ -1,15 +1,23 @@
 import request from 'superagent';
 import ExecutionEnvironment from 'fbjs/lib/ExecutionEnvironment';
-import SessionStore from '../stores/SessionStore'
+import SessionStore from '../stores/SessionStore';
 
-const getUrl = path => 'http://localhost:8000/api';
+const baseUrl = 'http://localhost:8000/api';
+const getUrl = path => `${baseUrl}${path}/`;
 
 const HttpClient = {
 
   get: path => new Promise((resolve, reject) => {
-    console.log(getUrl(path));
-    const req = request
+    var headers = {};
+    if (SessionStore.getToken()) {
+      headers = {
+        'Authorization': 'JWT ' + SessionStore.getToken()
+      };
+    }
+
+    return request
       .get(getUrl(path))
+      .set(headers)
       .accept('application/json')
       .end((err, res) => {
         if (err) {
@@ -22,16 +30,19 @@ const HttpClient = {
           resolve(res.body);
         }
       });
-
-    if (SessionStore.getToken()) {
-      req.set('Authorization', 'JWT ' + SessionStore.getToken());
-    }
-    return req;
   }),
 
   post: (path, data) => new Promise((resolve, reject) => {
-    const req = request
+    var headers = {};
+    if (SessionStore.getToken()) {
+      headers = {
+        'Authorization': 'JWT ' + SessionStore.getToken()
+      };
+    }
+
+    return request
       .post(getUrl(path))
+      .set(headers)
       .send(data)
       .accept('application/json')
       .end((err, res) => {
@@ -45,11 +56,6 @@ const HttpClient = {
           resolve(res.body);
         }
       });
-
-    if (SessionStore.getToken()) {
-      req.set('Authorization', 'JWT ' + SessionStore.getToken());
-    }
-    return req;
   })
 
 };

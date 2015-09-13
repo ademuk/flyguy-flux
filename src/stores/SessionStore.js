@@ -28,8 +28,8 @@ function getToken() {
  * @param  {Object} user
  */
 function create(user) {
-  return http.post('/token-auth', user).then(function(response) {
-    setToken(response.data.token);
+  return http.post('/token-auth/', user).then(function(response) {
+    setToken(response.token);
   });
 }
 
@@ -49,6 +49,10 @@ class SessionStore extends EventEmitter {
   exists() {
     // TODO check expiry date
     return !!getToken();
+  }
+
+  getToken() {
+    return getToken();
   }
 
   emitChange() {
