@@ -3,23 +3,30 @@ import EventEmitter from 'events';
 import SessionConstants from '../constants/SessionConstants';
 import http from '../core/HttpClient';
 
-var CHANGE_EVENT = 'change';
+const CHANGE_EVENT = 'change';
+var _token = null;
 
 /**
  * @param  {String} value
  */
 function setToken(value) {
-  //TODO server cookie impl.
-  if (value) {
-    localStorage.setItem('sessionToken', value);
+  if (typeof(localStorage) !== 'undefined') {
+    if (value) {
+      localStorage.setItem('sessionToken', value);
+    } else {
+      localStorage.removeItem('sessionToken');
+    }
   } else {
-    localStorage.removeItem('sessionToken');
+    _token = value || null;
   }
 }
 
 function getToken() {
-  //TODO server cookie impl. Look at express request
-  return localStorage.getItem('sessionToken');
+  if (typeof(localStorage) !== 'undefined') {
+    return localStorage.getItem('sessionToken');
+  } else {
+    return _token;
+  }
 }
 
 /**
@@ -53,6 +60,10 @@ class SessionStore extends EventEmitter {
 
   getToken() {
     return getToken();
+  }
+
+  setToken(token) {
+    setToken(token);
   }
 
   emitChange() {
