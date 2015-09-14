@@ -3,6 +3,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import express from 'express';
+import cookieParser from 'cookie-parser'
 import ReactDOM from 'react-dom/server';
 import Router from './Router';
 
@@ -10,13 +11,7 @@ const server = global.server = express();
 
 server.set('port', (process.env.PORT || 5000));
 server.use(express.static(path.join(__dirname, 'public')));
-
-//
-// Register API middleware
-// -----------------------------------------------------------------------------
-
-server.use('/api', require('./api/index'));
-server.use('/api/content', require('./api/content'));
+server.use(cookieParser());
 
 //
 // Register server-side rendering middleware
@@ -37,6 +32,10 @@ server.get('*', async (req, res, next) => {
       onSetMeta: (key, value) => data[key] = value,
       onPageNotFound: () => statusCode = 404
     };
+
+    if (req.cookies.sessionToken) {
+      SessionStore.setToken(req.cookies.sessionToken);
+    }
 
     await Router.dispatch({ path: req.path, context }, (state, component) => {
       data.body = ReactDOM.renderToString(component);
