@@ -4,14 +4,29 @@ import fs from 'fs';
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
 import ReactDOM from 'react-dom/server';
 import Router from './Router';
+import SessionStore from './stores/SessionStore'
 
 const server = global.server = express();
 
 server.set('port', (process.env.PORT || 5000));
 server.use(express.static(path.join(__dirname, 'public')));
+server.use(bodyParser.json())
 server.use(cookieParser());
+
+//
+// Register API middleware
+// -----------------------------------------------------------------------------
+
+server.get('*', async (req, res, next) => {
+  if (req.cookies.sessionToken) {
+    SessionStore.setToken(req.cookies.sessionToken);
+  }
+  next();
+});
+server.use('/api', require('./api/index'));
 
 //
 // Register server-side rendering middleware

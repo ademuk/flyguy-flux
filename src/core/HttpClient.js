@@ -2,8 +2,14 @@ import request from 'superagent';
 import ExecutionEnvironment from 'fbjs/lib/ExecutionEnvironment';
 import SessionStore from '../stores/SessionStore';
 
-const baseUrl = 'http://localhost:8000/api';
-const getUrl = path => `${baseUrl}${path}/`;
+const baseUrl = '/api';
+const getUrl = path => {
+  if (ExecutionEnvironment.canUseDOM) {
+    return baseUrl + path;
+  } else {
+    return `${process.env.WEBSITE_HOSTNAME}${baseUrl}${path}`;
+  }
+};
 
 const HttpClient = {
 
