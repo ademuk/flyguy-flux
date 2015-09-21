@@ -4,5 +4,6 @@
   "validateLineBreaks": "LF",
   "validateIndentation": 2,
   "excludeFiles": ["build/**", "node_modules/**"],
-  "esprima": "esprima-fb"
+  "esprima": "esprima-fb",
+  "esnext": true
 }

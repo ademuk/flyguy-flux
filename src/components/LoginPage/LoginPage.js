@@ -1,17 +1,17 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import styles from './LoginPage.css';
 import withStyles from '../../decorators/withStyles';
-import LoginForm from '../LoginForm/LoginForm'
+import LoginForm from '../LoginForm/LoginForm';
 import sessionActions from '../../actions/SessionActions';
 
 @withStyles(styles)
-class LoginPage {
+class LoginPage extends Component {
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired
-  };
+  }
 
-  onLoginSubmit = (user) => {
+  handleSubmit = (user) => {
     sessionActions.create(user);
   }
 
@@ -22,7 +22,7 @@ class LoginPage {
       <div className="LoginPage">
         <div className="LoginPage-container">
           <h3>{title}</h3>
-          <LoginForm onSubmit={this.onLoginSubmit}></LoginForm>
+          <LoginForm onSubmit={this.handleSubmit}/>
         </div>
       </div>
     );

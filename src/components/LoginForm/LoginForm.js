@@ -1,51 +1,55 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import ReactDom from 'react-dom';
 import styles from './LoginForm.css';
 import withStyles from '../../decorators/withStyles';
 
 @withStyles(styles)
-class LoginForm extends React.Component {
+class LoginForm extends Component {
 
-    handleSubmit = (event) => {
-      event.preventDefault();
-      var email = ReactDom.findDOMNode(this.refs.email).value.trim();
-      var password = ReactDom.findDOMNode(this.refs.password).value.trim();
-      if (!email || !password) {
-        return;
-      }
+  static propTypes = {
+    'handleSubmit': PropTypes.func.isRequired
+  }
 
-      this.props.onSubmit({
-        'email': email,
-        'password': password
-      });
-
-      ReactDom.findDOMNode(this.refs.email).value = '';
-      ReactDom.findDOMNode(this.refs.password).value = '';
+  handleSubmit = (event) => {
+    event.preventDefault();
+    var email = ReactDom.findDOMNode(this.refs.email).value.trim();
+    var password = ReactDom.findDOMNode(this.refs.password).value.trim();
+    if (!email || !password) {
+      return;
     }
 
-    render() {
-      return (
-        <form onSubmit={this.handleSubmit}>
-          <ul>
-            <li>
-              <label>
-                E-mail
-                <input type="email" placeholder="Email" ref='email' />
-              </label>
-            </li>
-            <li>
-              <label>
-                Password
-                <input type="password" placeholder="Password" ref='password' />
-              </label>
-            </li>
-            <li>
-              <input type='submit' value='Log in' />
-            </li>
-          </ul>
-        </form>
-      );
-    }
+    this.props.handleSubmit({
+      'email': email,
+      'password': password
+    });
+
+    ReactDom.findDOMNode(this.refs.email).value = '';
+    ReactDom.findDOMNode(this.refs.password).value = '';
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <ul>
+          <li>
+            <label>
+              E-mail
+              <input type="email" placeholder="Email" ref="email" />
+            </label>
+          </li>
+          <li>
+            <label>
+              Password
+              <input type="password" placeholder="Password" ref="password" />
+            </label>
+          </li>
+          <li>
+            <input type="submit" value="Log in" />
+          </li>
+        </ul>
+      </form>
+    );
+  }
 };
 
 export default LoginForm;
