@@ -22,7 +22,7 @@ class LoginPage extends Component {
       <div className="LoginPage">
         <div className="LoginPage-container">
           <h3>{title}</h3>
-          <LoginForm onSubmit={this.handleSubmit}/>
+          <LoginForm handleSubmit={this.handleSubmit}/>
         </div>
       </div>
     );
