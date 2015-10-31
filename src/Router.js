@@ -9,6 +9,7 @@ import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
+import sessionStore from './stores/SessionStore'
 
 const router = new Router(on => {
 
@@ -18,7 +19,7 @@ const router = new Router(on => {
   });
 
   on('/flights', async () => {
-    const data = await http.get(`/flights`);
+    const data = sessionStore.exists() ? await http.get(`/flights`) : {results: []};
     return <FlightsPage {...data} />;
   });
 

@@ -25,7 +25,7 @@ class FlightsPage extends Component {
             </li>);
           })}
         </ul>
-        {this.props.results.length === 0 ? <p>You don't have any flights yet. You should log a flight.</p> : ''}
+        {this.props.results.length === 0 ? <p>You don't have any flights yet. You should <a href='log '>log a flight</a>.</p> : ''}
       </div>
     </div>);
   }
