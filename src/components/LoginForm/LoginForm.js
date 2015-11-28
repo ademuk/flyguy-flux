@@ -34,13 +34,13 @@ class LoginForm extends Component {
           <li>
             <label>
               E-mail
-              <input type="email" placeholder="Email" ref="email" />
+              <input type="email" placeholder="Email" ref="email" value="" />
             </label>
           </li>
           <li>
             <label>
               Password
-              <input type="password" placeholder="Password" ref="password" />
+              <input type="password" placeholder="Password" ref="password" value="" />
             </label>
           </li>
           <li>

@@ -3,6 +3,8 @@ import styles from './LoginPage.css';
 import withStyles from '../../decorators/withStyles';
 import LoginForm from '../LoginForm/LoginForm';
 import sessionActions from '../../actions/SessionActions';
+import sessionStore from '../../stores/SessionStore'
+import Location from '../../core/Location';
 
 @withStyles(styles)
 class LoginPage extends Component {
@@ -12,7 +14,10 @@ class LoginPage extends Component {
   }
 
   handleSubmit = (user) => {
-    sessionActions.create(user);
+    sessionStore.create(user).then(function () {
+      sessionActions.created();
+      Location.pushState(null, '/flights');
+    });
   }
 
   render() {

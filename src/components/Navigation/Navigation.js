@@ -1,26 +1,35 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
 import styles from './Navigation.css';
 import withStyles from '../../decorators/withStyles';
 import Link from '../Link';
+import sessionStore from '../../stores/SessionStore'
 
 @withStyles(styles)
-class Navigation {
+class Navigation extends Component {
 
   static propTypes = {
     className: PropTypes.string
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {loggedIn: sessionStore.exists()};
+  }
+
+  componentDidMount() {
+    sessionStore.addChangeListener(() => {
+      this.setState({loggedIn: sessionStore.exists()});
+    });
+  }
+
   render() {
     return (
       <div className={classNames(this.props.className, 'Navigation')} role="navigation">
-
-        <a className="Navigation-link" href="/flights" onClick={Link.handleClick}>Flights</a>
-        <a className="Navigation-link" href="/log" onClick={Link.handleClick}>Log</a>
+        <Link className="Navigation-link" href="/flights">Flights</Link>
+        <Link className="Navigation-link" href="/log">Log</Link>
         <span className="Navigation-spacer"> | </span>
-        <a className="Navigation-link" href="/login" onClick={Link.handleClick}>Log in</a>
-        <span className="Navigation-spacer">or</span>
-        <a className="Navigation-link Navigation-link--highlight" href="/register" onClick={Link.handleClick}>Sign up</a>
+        {this.state.loggedIn ? <Link className="Navigation-link" href="/logout">Log out</Link> : <Link className="Navigation-link" href="/login">Log in</Link>}
       </div>
     );
   }

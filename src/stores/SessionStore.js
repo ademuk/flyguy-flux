@@ -30,17 +30,6 @@ function getToken() {
 }
 
 /**
- * Create a Session item.
- *
- * @param  {Object} user
- */
-function create(user) {
-  return http.post('/token-auth/', user).then(function(response) {
-    setToken(response.token);
-  });
-}
-
-/**
  * Destroy a Session item.
  */
 function destroy() {
@@ -48,10 +37,24 @@ function destroy() {
 }
 
 class SessionStore extends EventEmitter {
+
   /**
-   * Get the entire collection of TODOs.
+   * Create a Session item.
    *
-   * @return {Object}
+   * @param  {Object} user
+   */
+  create(user) {
+    return http.post('/token-auth/', user).then(function(response) {
+      setToken(response.token);
+    });
+  }
+
+  destroy() {
+    destroy();
+  }
+
+  /**
+   * @return {boolean}
    */
   exists() {
     // TODO check expiry date
@@ -78,7 +81,7 @@ class SessionStore extends EventEmitter {
   }
 
   /**
-   * @param {Fuunction} callback
+   * @param {Function} callback
    */
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
@@ -89,14 +92,11 @@ const sessionStore = new SessionStore();
 
 dispatcher.register(function(action) {
   switch (action.actionType) {
-  case SessionConstants.SESSION_CREATE:
-    create(action.user).then(function() {
-      sessionStore.emitChange();
-    });
+  case SessionConstants.SESSION_CREATED:
+    sessionStore.emitChange();
     break;
 
-  case SessionConstants.SESSION_DESTROY:
-    destroy();
+  case SessionConstants.SESSION_DESTROYED:
     sessionStore.emitChange();
     break;
   }

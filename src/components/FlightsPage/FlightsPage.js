@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import styles from './FlightsPage.css';
 import withStyles from '../../decorators/withStyles';
-import Link from '../Link';
+import Link from '../Link/Link';
 
 @withStyles(styles)
 class FlightsPage extends Component {
@@ -25,7 +25,7 @@ class FlightsPage extends Component {
             </li>);
           })}
         </ul>
-        {this.props.results.length === 0 ? <p>You don't have any flights yet. You should <a href='log '>log a flight</a>.</p> : ''}
+        {this.props.results.length === 0 ? <p>You don't have any flights yet. You should <Link href="log">log a flight</Link>.</p> : ''}
       </div>
     </div>);
   }

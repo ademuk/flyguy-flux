@@ -2,16 +2,16 @@ import dispatcher from '../core/Dispatcher';
 import SessionConstants from '../constants/SessionConstants';
 
 class SessionActions {
-  create(user) {
-    dispatcher.dispatch({
-      actionType: SessionConstants.SESSION_CREATE,
+  created(user) {
+    return dispatcher.dispatch({
+      actionType: SessionConstants.SESSION_CREATED,
       user: user
     });
   }
 
-  destroy() {
+  destroyed() {
     dispatcher.dispatch({
-      actionType: SessionConstants.SESSION_DESTROY
+      actionType: SessionConstants.SESSION_DESTROYED
     });
   }
 }

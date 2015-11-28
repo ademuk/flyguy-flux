@@ -6,6 +6,7 @@ import FlightsPage from './components/FlightsPage';
 import FlightPage from './components/FlightPage';
 import LogPage from './components/LogPage';
 import LoginPage from './components/LoginPage';
+import LogoutPage from './components/LogoutPage';
 import RegisterPage from './components/RegisterPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
@@ -31,6 +32,8 @@ const router = new Router(on => {
   on('/log', async () => <LogPage />);
 
   on('/login', async () => <LoginPage />);
+
+  on('/logout', async () => <LogoutPage />);
 
   on('/register', async () => <RegisterPage />);
 

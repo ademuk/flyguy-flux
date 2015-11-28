@@ -4,6 +4,8 @@ import withStyles from '../../decorators/withStyles';
 import LogForm from '../LogForm/LogForm';
 import http from '../../core/HttpClient';
 import sessionStore from '../../stores/SessionStore'
+import Location from '../../core/Location';
+import Link from '../Link/Link';
 
 @withStyles(styles)
 class LogPage extends Component {
@@ -13,9 +15,8 @@ class LogPage extends Component {
   }
 
   onFlightSubmit = (flight) => {
-    http.post('/api/flights', flight).then(function() {
-      alert('Flighted Added', flight);
-      // TODO redirect
+    http.post('/flights', flight).then(function() {
+      Location.pushState(null, '/flights');
     });
   }
 
@@ -26,7 +27,7 @@ class LogPage extends Component {
     if (sessionStore.exists()) {
       form = <LogForm handleSubmit={this.onFlightSubmit}/>
     } else {
-      form = <p>Please <a href='login'>log in</a> to add a flight.</p>
+      form = <p>Please <Link href="login">log in</Link> to add a flight.</p>
     }
     return (
       <div className="LogPage">

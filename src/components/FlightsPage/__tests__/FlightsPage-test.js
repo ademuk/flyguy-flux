@@ -20,7 +20,7 @@ describe('FlightsPage', function() {
     );
     var p = ReactTestUtils.findRenderedDOMComponentWithTag(page, 'p');
     expect(ReactDom.findDOMNode(p).textContent)
-      .toEqual('You don\'t have any flights yet. You should log a flight.');
+      .toContain('You don\'t have any flights yet.');
   });
 
   it('shows flights', function() {

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import Location from '../../core/Location';
 
 function isLeftClickEvent(event) {
@@ -9,7 +9,7 @@ function isModifiedEvent(event) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 }
 
-class Link {
+class Link extends Component {
 
   static propTypes = {
     to: PropTypes.string,

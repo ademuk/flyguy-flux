@@ -23,5 +23,7 @@ router.post('*', async (req, res, next) => {
   });
 });
 
+//TODO add error handling
+
 export default router;
 
