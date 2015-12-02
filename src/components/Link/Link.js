@@ -38,8 +38,6 @@ class Link extends Component {
 
     if (allowTransition) {
       const link = event.currentTarget;
-      console.log(this.props && this.props.state || null,
-        this.props && this.props.to || (link.pathname + link.search));
       Location.pushState(
         this.props && this.props.state || null,
         this.props && this.props.to || (link.pathname + link.search));
