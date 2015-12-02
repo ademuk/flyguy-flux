@@ -7,20 +7,14 @@ import Link from '../Link/Link';
 class FlightsPage extends Component {
 
   static propTypes = {
-    'results': PropTypes.array.isRequired
-  }
-
-  static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired
+    results: PropTypes.array.isRequired
   }
 
   render() {
-    let title = 'Flights';
-    this.context.onSetTitle(title);
     const noFlightsElement = <p>You don't have any flights yet. You should <Link href="log">log a flight</Link>.</p>;
     return (
       <div>
-        <h3>{title}</h3>
+        <h3>Flights</h3>
         <ul className="flights">
           {this.props.results.map(function(result) {
             const href = '/flights/' + result.id;
