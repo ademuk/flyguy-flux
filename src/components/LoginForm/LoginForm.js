@@ -29,24 +29,24 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <ul>
-          <li>
-            <label>
-              E-mail
-              <input type="email" placeholder="Email" ref="email" />
-            </label>
-          </li>
-          <li>
-            <label>
-              Password
-              <input type="password" placeholder="Password" ref="password" />
-            </label>
-          </li>
-          <li>
-            <input type="submit" value="Log in" />
-          </li>
-        </ul>
+      <form name="loginForm" className="form-horizontal" onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <label forHtml="email" className="col-sm-2 control-label">E-mail</label>
+          <div className="col-sm-10">
+            <input ref="email" type="email" className="form-control" placeholder="E-mail" required />
+          </div>
+        </div>
+        <div className="form-group">
+          <label forHtml="password" className="col-sm-2 control-label">Password</label>
+          <div className="col-sm-10">
+            <input ref="password" type="password" className="form-control" placeholder="Password" required />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="col-sm-offset-2 col-sm-10">
+            <button type="submit" className="btn btn-default">Log in</button>
+          </div>
+        </div>
       </form>
     );
   }

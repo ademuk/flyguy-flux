@@ -32,30 +32,31 @@ class LogForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <ul>
-          <li>
-            <label>
-              Name
-              <input type="text" placeholder="Name" ref="name" />
-            </label>
-          </li>
-          <li>
-            <label>
-              Date
-              <input type="date" placeholder="Date" ref="date" />
-            </label>
-          </li>
-          <li>
-            <label>
-              Notes
-              <textarea placeholder="Notes" ref="notes"></textarea>
-            </label>
-          </li>
-          <li>
-            <input type="submit" value="Save" />
-          </li>
-        </ul>
+      <form name="flightForm" className="form-horizontal" onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <label forHtml="name" className="col-sm-2 control-label">Name</label>
+          <div className="col-sm-10">
+            <input ref="name" type="text" className="form-control" placeholder="Name" required />
+          </div>
+        </div>
+        <div className="form-group">
+          <label forHtml="date" className="col-sm-2 control-label">Date</label>
+          <div className="col-sm-10">
+            <input ref="date" type="date" className="form-control" placeholder="Date" required />
+          </div>
+        </div>
+        <div className="form-group">
+          <label forHtml="notes" className="col-sm-2 control-label">Notes</label>
+          <div className="col-sm-10">
+            <textarea ref="notes" className="form-control" rows="5" placeholder="Notes" required>
+            </textarea>
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="col-sm-offset-2 col-sm-10">
+            <button type="submit" className="btn btn-default">Save</button>
+          </div>
+        </div>
       </form>
     );
   }

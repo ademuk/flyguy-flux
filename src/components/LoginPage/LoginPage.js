@@ -24,11 +24,9 @@ class LoginPage extends Component {
     let title = 'Log in';
     this.context.onSetTitle(title);
     return (
-      <div className="LoginPage">
-        <div className="LoginPage-container">
-          <h3>{title}</h3>
-          <LoginForm handleSubmit={this.handleSubmit}/>
-        </div>
+      <div>
+        <h3>{title}</h3>
+        <LoginForm handleSubmit={this.handleSubmit}/>
       </div>
     );
   }

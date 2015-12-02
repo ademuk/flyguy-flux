@@ -30,11 +30,9 @@ class LogPage extends Component {
       form = <p>Please <Link href="login">log in</Link> to add a flight.</p>
     }
     return (
-      <div className="LogPage">
-        <div className="LogPage-container">
-          <h3>{title}</h3>
-          {form}
-        </div>
+      <div>
+        <h3>{title}</h3>
+        {form}
       </div>
     );
   }

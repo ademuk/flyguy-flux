@@ -16,15 +16,11 @@ class FlightPage extends Component {
   }
 
   render() {
-    let title = 'Flight';
-    this.context.onSetTitle(title);
+    this.context.onSetTitle(this.props.name);
     return (
       <div className="FlightPage">
-        <div className="FlightPage-container">
-          <h3>{this.props.name}</h3>
-          <p>{this.props.date}</p>
-          <pre>{this.props.notes}</pre>
-        </div>
+        <h3>{this.props.name} <small>{this.props.date}</small></h3>
+        <pre>{this.props.notes}</pre>
       </div>
     );
   }

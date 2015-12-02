@@ -10,24 +10,33 @@ class FlightsPage extends Component {
     'results': PropTypes.array.isRequired
   }
 
+  static contextTypes = {
+    onSetTitle: PropTypes.func.isRequired
+  }
+
   render() {
-    return (<div className="FlightsPage">
-      <div className="FlightsPage-container">
-        <h3>Flights</h3>
-        <ul>
+    let title = 'Flights';
+    this.context.onSetTitle(title);
+    const noFlightsElement = <p>You don't have any flights yet. You should <Link href="log">log a flight</Link>.</p>;
+    return (
+      <div>
+        <h3>{title}</h3>
+        <ul className="flights">
           {this.props.results.map(function(result) {
             const href = '/flights/' + result.id;
-            return (<li key={result.id}>
-              <h4>
-                <Link href={href}>{result.name}</Link>
-                <small>{result.date}</small>
-              </h4>
-            </li>);
+            return (
+              <li key={result.id}>
+                <h4>
+                  <Link href={href}>{result.name}</Link> <small>{result.date}</small>
+                </h4>
+                <p>{result.notes}</p>
+              </li>
+            );
           })}
         </ul>
-        {this.props.results.length === 0 ? <p>You don't have any flights yet. You should <Link href="log">log a flight</Link>.</p> : ''}
+        {this.props.results.length === 0 ? noFlightsElement : ''}
       </div>
-    </div>);
+    );
   }
 
 }
