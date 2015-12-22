@@ -48,7 +48,7 @@ class Navigation extends Component {
                 <Link href="/log">Log</Link>
               </li>
               <li>
-                {this.state.loggedIn ? <Button className="btn btn-default navbar-btn" to="/logout">Log out</Button> : <Button className="btn btn-default navbar-btn" to="/login">Log in</Button>}
+                {this.state.loggedIn ? <Link className="btn btn-default navbar-btn" to="/logout">Log out</Link> : <Link className="btn btn-default navbar-btn" to="/login">Log in</Link>}
               </li>
             </ul>
             <ul className="nav navbar-nav pull-right">
