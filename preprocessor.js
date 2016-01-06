@@ -10,25 +10,20 @@
 var babel = require("babel-core");
 
 module.exports = {
-  process: function (src, filename) {
-    // Allow the stage to be configured by an environment
-    // variable, but use Babel's default stage (2) if
-    // no environment variable is specified.
-    var stage = process.env.BABEL_JEST_STAGE || 2;
+  process: function(src, filename) {
+    // Ignore files other than .js, .es, .jsx or .es6
+    if (!babel.canCompile(filename)) {
+      return '';
+    }
 
     // Ignore all files within node_modules
-    // babel files can be .js, .es, .jsx or .es6
-    if (filename.indexOf('node_modules') === -1 && babel.canCompile(filename)) {
+    if (filename.indexOf('node_modules') === -1) {
       return babel.transform(src, {
         filename: filename,
-        stage: stage,
+        stage: process.env.BABEL_JEST_STAGE || 2,
         retainLines: true,
         auxiliaryCommentBefore: 'istanbul ignore next'
       }).code;
-    }
-
-    if (!babel.canCompile(filename)) {
-      return '';
     }
 
     return src;
