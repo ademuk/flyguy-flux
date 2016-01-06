@@ -1,4 +1,4 @@
-# Flyguy Flux Client
+# Flyguy Isomorphic Client
 [![Build Status](https://travis-ci.org/ademuk/flyguy-isomorphic.svg?branch=master)](https://travis-ci.org/ademuk/flyguy-isomorphic)
 
 An isomorphic implementation of Flyguy
