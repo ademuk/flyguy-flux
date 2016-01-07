@@ -53,7 +53,7 @@ class Navigation extends Component {
             </ul>
             <ul className="nav navbar-nav pull-right">
               <li>
-                <a href="https://github.com/ademuk/flyguy-flux"><i className="fa fa-github fa-lg"></i></a>
+                <a href="https://github.com/ademuk/flyguy-isomorphic"><i className="fa fa-github fa-lg"></i></a>
               </li>
             </ul>
           </div>
